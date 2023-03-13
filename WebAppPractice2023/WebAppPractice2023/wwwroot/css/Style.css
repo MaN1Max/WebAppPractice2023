@@ -1,0 +1,12 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #FFFFFF;
+}
+body {
+    background: #134E5E;
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);
+    background: linear-gradient(to right, #71B280, #134E5E);
+}
