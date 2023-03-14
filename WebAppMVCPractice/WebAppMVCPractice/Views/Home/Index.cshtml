@@ -1,0 +1,47 @@
+﻿@using WebAppMVCPractice.Models
+@model IQueryable<WebAppMVCPractice.Models.Tenant>
+@{
+    ViewData["Title"] = "Список арендаторов";
+}
+
+<div class="pageName">
+	<h2 class="pageNameText">@ViewData["Title"]</h2>
+</div>
+<div class="buttonsBlock">
+	<ul>
+		<li><a class="button" asp-controller="Home" asp-action="TenantEdit">  Добавить арендатора  </a></li>
+		<li><a class="button" href="#">  Поиск по ID  </a></li>
+	</ul>
+</div>
+<table class="table">
+	<thead class="thead">
+		<tr>
+			<th>Id</th>
+			<th>Фамилия</th>
+			<th>Имя</th>
+			<th>Отчество</th>
+			<th>Номер телефона</th>
+			<th>Почта</th>
+		</tr>
+	</thead>
+    @foreach (Tenant entity in Model)
+    {
+    <tbody class="tbody">
+        <tr>
+            <td>@entity.Id</td>
+            <td>@entity.Surn</td>
+            <td>@entity.Name</td>
+            <td>@entity.Patr</td>
+            <td>@entity.Phone</td>
+            <td>@entity.Email</td>
+            <td><a class="button" asp-controller="Home" asp-action="TenantEdit" asp-route-id="@entity.Id">  Изменить  </a></td>
+            <td>
+                <form class="buttonForm" method="post" asp-controller="Home" asp-action="TenantDelete">
+                    <input type="hidden" value="@entity.Id" name="Id" />
+                    <input type="submit" value="  Удалить  " />
+                </form>
+            </td>
+        </tr>
+    </tbody>
+    }
+</table>
