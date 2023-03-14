@@ -15,6 +15,7 @@ namespace WebAppPractice2023.Data.Mocks
                 {
                     new Tenants
                     { 
+                        Id = 001,
                         Surname = "Иванов",
                         Name = "Иван",
                         Patronymic = "Иванович",
@@ -22,7 +23,8 @@ namespace WebAppPractice2023.Data.Mocks
                         Email = "te.st@gmail.com"
                     },
                     new Tenants 
-                    { 
+                    {
+                        Id = 002,
                         Surname = "Олегов",
                         Name = "Олег",
                         Patronymic = "Олегович",
@@ -31,6 +33,7 @@ namespace WebAppPractice2023.Data.Mocks
                     },
                     new Tenants
                     {
+                        Id = 003,
                         Surname = "Акимов",
                         Name = "Аким",
                         Patronymic = "Акимович",

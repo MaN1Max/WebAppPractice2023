@@ -1,11 +1,17 @@
-﻿<h1>Список всех арендаторов</h1>
-@{
+﻿@{
     foreach(var tenant in Model.AllTenants)
     {
-        <div>
-        <h2>ФИО: @tenant.Surname @tenant.Name @tenant.Patronymic</h2>
-        <p>Номер телефона: @tenant.PhoneNumber</p>
-        <p>Почта: @tenant.Email</p>
-        </div>
+    <tbody class="tbody">
+        <tr>
+            <td>@tenant.Id</td>
+            <td>@tenant.Surname</td>
+            <td>@tenant.Name</td>
+            <td>@tenant.Patronymic</td>
+            <td>@tenant.PhoneNumber</td>
+            <td>@tenant.Email</td>
+            <td><a class="button" href="#"> Изменить </a></td>
+            <td><a class="button" href="#"> Удалить </a></td>
+        </tr>
+    </tbody>
     }
 }

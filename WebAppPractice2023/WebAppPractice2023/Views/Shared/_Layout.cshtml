@@ -1,14 +1,59 @@
 ﻿<!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link href="~/css/Style.css" rel="stylesheet" type="text/css" />
+	<meta charset="UTF-8">
+	<title>@ViewBag.Title</title>
 </head>
+<link href="~/css/Style.css?Version=1" rel="stylesheet" type="text/css" runat="server" />
 <body>
-    <div>
-        @RenderBody()
-    </div>
+	<div class="wrapper">
+		<header>
+			<div class="menu">
+				<div class="logo">
+
+				</div>
+				<div class="logoText">
+					<h1 class="headerSiteName">WebApp.com</h1>
+				</div>
+				<div class="topMenu">
+					<ul>
+						<li><a href="#">##1##</a></li>
+						<li>|</li>
+						<li><a href="#">##2##</a></li>
+						<li>|</li>
+						<li><a href="#">##3##</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<div class="content">
+			<div class="tableName">
+				<h2 class="tableNameText">Таблица: Арендаторы</h2>
+			</div>
+			<div class="buttonsBlock">
+				<ul>
+					<li><a class="button" href="#">  Добавить пользователя  </a></li>
+					<li><a class="button" href="#">  Кнопка  </a></li>
+					<li><a class="button" href="#">  Кнопка  </a></li>
+				</ul>
+			</div>
+			<table class="table">
+				<thead class="thead">
+					<tr>
+						<th>Id</th>
+						<th>Фамилия</th>
+						<th>Имя</th>
+						<th>Отчество</th>
+						<th>Номер телефона</th>
+						<th>Почта</th>
+					</tr>
+				</thead>
+				@RenderBody()
+			</table>
+		</div>
+		<footer class="footer">
+
+		</footer>
+	</div>
 </body>
 </html>
