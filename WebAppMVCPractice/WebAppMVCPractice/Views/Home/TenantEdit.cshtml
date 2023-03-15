@@ -1,77 +1,43 @@
 ﻿@model WebAppMVCPractice.Models.Tenant
 @{
-    ViewData["Title"] = "Добавление/Редактирование";
+    ViewData["Title"] = "Добавление/Изменение";
 }
 
 <div class="pageName">
     <h2 class="pageNameText">@ViewData["Title"]</h2>
 </div>
-<table class="table">
-    <tbody class="tbody">
-        <form class="buttonForm" method="post" asp-controller="Home" asp-action="TenantEdit">
+<table class="tableEdit">
+    <form method="post" asp-controller="Home" asp-action="TenantEdit">
+        <thead class="thead">
+            <tr>
+                <th colspan="2"><div asp-validation-summary="All"></div></th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
             <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="All"></div>
             <tr>
                 <td><label asp-for="Surn"></label></td>
-                <td><input asp-for="Surn" /></td>
+                <td><input class="formEdit" asp-for="Surn" /></td>
             </tr>
             <tr>
                 <td><label asp-for="Name"></label></td>
-                <td><input asp-for="Name" /></td>
+                <td><input class="formEdit" asp-for="Name" /></td>
             </tr>
             <tr>
                 <td><label asp-for="Patr"></label></td>
-                <td><input asp-for="Patr" /></td>
+                <td><input class="formEdit" asp-for="Patr" /></td>
             </tr>
             <tr>
                 <td><label asp-for="Phone"></label></td>
-                <td><input asp-for="Phone" /></td>
+                <td><input class="formEdit" asp-for="Phone" /></td>
             </tr>
             <tr>
                 <td><label asp-for="Email"></label></td>
-                <td><input asp-for="Email" /></td>
+                <td><input class="formEdit" asp-for="Email" /></td>
             </tr>
             <tr>
-                <td rowspan="2"><input type="submit" value="  Сохранить  " /></td>
+                <td colspan="2" class="buttonFormEdit"><input type="submit" value="  Сохранить  " /></td>
             </tr>
-        </form>
-    </tbody>
+        </tbody>
+    </form>
 </table>
-
-
-
-@*<div class="text-center">
-    <h1>Редактировать</h1>
-    <div>
-        <form method="post" asp-controller="Home" asp-action="TenantEdit">
-            <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="All"></div>
-            <div>
-                <label asp-for="Surn"></label>
-                <input asp-for="Surn"/>
-                <span asp-validation-for="Surn"></span>
-            </div>
-            <div>
-                <label asp-for="Name"></label>
-                <input asp-for="Name" />
-                <span asp-validation-for="Name"></span>
-            </div>
-            <div>
-                <label asp-for="Patr"></label>
-                <input asp-for="Patr" />
-                <span asp-validation-for="Patr"></span>
-            </div>
-            <div>
-                <label asp-for="Phone"></label>
-                <input asp-for="Phone" />
-                <span asp-validation-for="Phone"></span>
-            </div>
-            <div>
-                <label asp-for="Email"></label>
-                <input asp-for="Email" />
-                <span asp-validation-for="Email"></span>
-            </div>
-            <input type="submit" value="Сохранить"/>
-        </form>
-    </div>
-</div>*@

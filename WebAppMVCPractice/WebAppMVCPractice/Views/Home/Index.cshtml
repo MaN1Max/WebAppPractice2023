@@ -9,8 +9,15 @@
 </div>
 <div class="buttonsBlock">
 	<ul>
-		<li><a class="button" asp-controller="Home" asp-action="TenantEdit">  Добавить арендатора  </a></li>
-		<li><a class="button" href="#">  Поиск по ID  </a></li>
+		<li>
+            <a class="button" asp-controller="Home" asp-action="TenantEdit">  Добавить арендатора  </a>
+        </li>
+        <li>
+            <form class="buttonForm" method="post" asp-controller="Home" asp-action="TenantById">
+                <input type="submit" value="  Поиск по Id  " />
+                <input type="search" name="id" />
+            </form>
+        </li>
 	</ul>
 </div>
 <table class="table">

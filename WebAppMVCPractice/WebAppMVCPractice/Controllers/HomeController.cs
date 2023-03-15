@@ -25,6 +25,12 @@ namespace WebAppMVCPractice.Controllers
             return View(model);
         }
 
+        public IActionResult TenantById(int id)
+        {
+            var model = tenantRepository.GetTenantById(id);
+            return View(model);
+        }
+
         public IActionResult TenantEdit(int id) //создание+редактирование
         {
             Tenant model = id == default ? new Tenant() : tenantRepository.GetTenantById(id);

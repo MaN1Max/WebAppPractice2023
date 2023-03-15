@@ -15,12 +15,12 @@ namespace WebAppMVCPractice.Repository
 
         public IQueryable<Tenant> GetTtenants() //получить всех
         {
-            return context.Tenant.OrderBy(x => x.Surn);
+            return context.Tenant.OrderBy(x => x.Id);
         }
 
         public Tenant GetTenantById(int id) //получить по id
         {
-            return context.Tenant.Single(x => x.Id == id);
+            return context.Tenant.SingleOrDefault(x => x.Id == id);
         }
 
         public int SaveTenant(Tenant entity) //сохранение/обновление
