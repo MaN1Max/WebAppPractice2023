@@ -1,13 +1,13 @@
 ﻿@model WebAppMVCPractice.Models.Tenant
 @{
-    ViewData["Title"] = "Изменение";
+    ViewData["Title"] = "Добавление";
 }
 
 <div class="pageName">
     <h2 class="pageNameText">@ViewData["Title"]</h2>
 </div>
 <table class="tableEdit">
-    <form method="post" asp-controller="Home" asp-action="TenantEdit">
+    <form method="post" asp-controller="Home" asp-action="TenantCreate">
     <thead class="thead">
         <tr>
             <th colspan="2"><div asp-validation-summary="All"></div></th>

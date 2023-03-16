@@ -1,10 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using WebAppMVCPractice.Models;
 using WebAppMVCPractice.Repository;
 
@@ -19,7 +13,7 @@ namespace WebAppMVCPractice.Controllers
             this.tenantRepository = tenantRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult TenantList()
         {
             var model = tenantRepository.GetTtenants();
             return View(model);
@@ -31,26 +25,44 @@ namespace WebAppMVCPractice.Controllers
             return View(model);
         }
 
-        public IActionResult TenantEdit(int id) //создание+редактирование
+        public IActionResult TenantCreate()
         {
-            Tenant model = id == default ? new Tenant() : tenantRepository.GetTenantById(id);
+            Tenant model = new Tenant();
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult TenantCreate(Tenant model)
+        {
+            if (ModelState.IsValid)
+            {
+                tenantRepository.CreateTenant(model);
+                return RedirectToAction("TenantList");
+            }
+            return View(model);
+        }
+
+        public IActionResult TenantEdit(int id)
+        {
+            Tenant model = tenantRepository.GetTenantById(id);
+            return View(model);
+        }
+
         [HttpPost]
         public IActionResult TenantEdit(Tenant model)
         {
             if (ModelState.IsValid)
             {
-                tenantRepository.SaveTenant(model);
-                return RedirectToAction("Index");
+                tenantRepository.EditTenant(model);
+                return RedirectToAction("TenantList");
             }
             return View(model);
         }
 
-        public IActionResult TenantDelete(int id) //удаление
+        public IActionResult TenantDelete(int id)
         {
             tenantRepository.DeleteTenant(new Tenant() { Id = id });
-            return RedirectToAction("Index");
+            return RedirectToAction("TenantList");
         }
 
         public IActionResult Privacy()

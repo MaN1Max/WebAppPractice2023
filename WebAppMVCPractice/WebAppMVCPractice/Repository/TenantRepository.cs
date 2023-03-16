@@ -13,32 +13,31 @@ namespace WebAppMVCPractice.Repository
             this.context = context;
         }
 
-        public IQueryable<Tenant> GetTtenants() //получить всех
+        public IQueryable<Tenant> GetTtenants()
         {
             return context.Tenant.OrderBy(x => x.Id);
         }
 
-        public Tenant GetTenantById(int id) //получить по id
+        public Tenant GetTenantById(int id)
         {
             return context.Tenant.SingleOrDefault(x => x.Id == id);
         }
 
-        public int SaveTenant(Tenant entity) //сохранение/обновление
+        public int CreateTenant(Tenant entity)
         {
-            if (entity.Id == default)
-            {
-                context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
-            }
-            else
-            {
-                context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            }
+            context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             context.SaveChanges();
-
             return entity.Id;
         }
 
-        public void DeleteTenant(Tenant entity) //удаление
+        public int EditTenant(Tenant entity)
+        {
+            context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.SaveChanges();
+            return entity.Id;
+        }
+
+        public void DeleteTenant(Tenant entity)
         {
             context.Tenant.Remove(entity);
             context.SaveChanges();
