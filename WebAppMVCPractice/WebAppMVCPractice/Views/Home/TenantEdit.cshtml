@@ -1,0 +1,43 @@
+﻿@model WebAppMVCPractice.Models.Tenant
+@{
+    ViewData["Title"] = "Изменение";
+}
+
+<div class="pageName">
+    <h2 class="pageNameText">@ViewData["Title"]</h2>
+</div>
+<table class="tableEdit">
+    <form method="post" asp-controller="Home" asp-action="TenantEdit">
+    <thead class="thead">
+        <tr>
+            <th colspan="2"><div asp-validation-summary="All"></div></th>
+        </tr>
+    </thead>
+    <tbody class="tbody">
+        <input type="hidden" asp-for="Id" />
+        <tr>
+            <td><label asp-for="Surn"></label></td>
+            <td><input class="formEdit" asp-for="Surn" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Name"></label></td>
+            <td><input class="formEdit" asp-for="Name" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Patr"></label></td>
+            <td><input class="formEdit" asp-for="Patr" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Phone"></label></td>
+            <td><input class="formEdit" asp-for="Phone" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email"></label></td>
+            <td><input class="formEdit" asp-for="Email" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="buttonFormEdit"><input type="submit" value="  Сохранить  " /></td>
+        </tr>
+    </tbody>
+    </form>
+</table>
