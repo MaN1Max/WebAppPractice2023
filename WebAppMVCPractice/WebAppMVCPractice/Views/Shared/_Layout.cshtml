@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"] - WebApp.com</title>
+</head>
+<link href="~/css/Style.css?Version=1" rel="stylesheet" type="text/css" runat="server" />
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="menu">
+                <div class="logo">
+                </div>
+                <div class="logoText">
+                    <h1 class="headerSiteName">WebApp.com</h1>
+                </div>
+                <div class="topMenu">
+                    <ul>
+                        <li><a asp-area="" asp-controller="Home" asp-action="TenantList">Список арендаторов</a></li>
+                        <li>|</li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <footer class="footer">
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+﻿* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #FFFFFF;
+}
+body {
+    background: #134E5E;
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);
+    background: linear-gradient(to right, #71B280, #134E5E);
+}
+a:hover {
+    color: #609f7a;
+}
+.wrapper {
+    padding: 30px;
+}
+
+
+.menu {
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0px solid black;
+    background: #00000090;
+    border-radius: 10px;
+    width: 60%;
+    height: 50px;
+}
+.headerSiteName {
+    font-size: 30px;
+}
+.logo, .logoText, .topMenu {
+    display: inline-block;
+    margin: auto 0px auto 0px;
+}
+.logoText {
+    margin-right: 15px;
+}
+.topMenu li {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+.topMenu a {
+    text-decoration: none;
+}
+
+
+.pageName {
+    user-select: none;
+    display: flex;
+    margin: 50px auto 0px auto;
+    justify-content: center;
+    background: #00000090;
+    border-radius: 10px;
+    width: 22%;
+    height: 50px;
+}
+.pageNameText {
+    margin: auto 0px auto 0px;
+}
+
+
+.buttonsBlock {
+    user-select: none;
+    display: flex;
+    margin: 50px auto 0px auto;
+    border: 0px solid black;
+    background: #00000090;
+    border-radius: 10px;
+    width: 60%;
+    height: 50px;
+}
+.buttonsBlock ul {
+    margin: auto 0px auto 0px;
+}
+.buttonsBlock li {
+    display: inline-block;
+}
+
+
+.button {
+    user-select: none;
+    text-decoration: none;
+    margin: 0px 0px 0px 20px;
+    background: #80808090;
+    border-radius: 10px;
+    font-weight: 700;
+}
+.buttonForm input {
+    border: 0px;
+    border-radius: 10px;
+    background: #80808090;
+    font-weight: 700;
+    font-size: 11pt;
+    padding: 1.4px;
+}
+.buttonForm input:hover {
+    color: #609f7a;
+}
+.formEdit {
+    border: 0px;
+    border-radius: 10px;
+    background: #80808090;
+    font-weight: 700;
+    font-size: 11pt;
+    padding: 3px;
+}
+.buttonFormEdit input {
+    border: 0px;
+    border-radius: 10px;
+    background: #80808090;
+    font-weight: 700;
+    font-size: 11pt;
+    padding: 1.4px;
+}
+.buttonFormEdit input:hover {
+    color: #609f7a;
+}
+
+
+.table {
+    margin: 10px auto 0px auto;
+    background: #00000090;
+    border-radius: 10px 10px 10px 10px;
+    width: 60%;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+}
+.table th {
+    padding: 10px;
+    border-bottom: 1px solid #ffffff75;
+}
+.table td {
+    padding: 10px;
+    border-top: 1px solid #ffffff75;
+}
+.tableEdit {
+    margin: 50px auto 0px auto;
+    background: #00000090;
+    border-radius: 10px 10px 10px 10px;
+    width: 25%;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+}
+.tableEdit th {
+    padding: 10px;
+    border-bottom: 1px solid #ffffff75;
+}
+.tableEdit td {
+    padding: 10px;
+    border-top: 1px solid #ffffff75;
+}
+.thead ul{
+    list-style: none;
+}

@@ -1,0 +1,62 @@
+﻿@model WebAppMVCPractice.Models.Tenant
+@{
+    ViewData["Title"] = "Поиск по Id";
+}
+
+<div class="pageName">
+    <h2 class="pageNameText">@ViewData["Title"]</h2>
+</div>
+<div class="buttonsBlock">
+    <ul>
+        <li>
+            <a class="button" asp-controller="Home" asp-action="TenantCreate">  Добавить арендатора  </a>
+        </li>
+        <li>
+            <b> | </b>
+        </li>
+        <li>
+            <form class="buttonFormEdit" method="post" asp-controller="Home" asp-action="TenantById">
+                <input type="submit" value="  Поиск по Id  " />
+                <input class="formEdit" type="search" name="id" />
+            </form>
+        </li>
+    </ul>
+</div>
+<table class="table">
+    <thead class="thead">
+        <tr>
+            <th>Id</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Номер телефона</th>
+            <th>Почта</th>
+        </tr>
+    </thead>
+    <tbody class="tbody">
+        @if (Model != null)
+        {
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.Surn</td>
+                <td>@Model.Name</td>
+                <td>@Model.Patr</td>
+                <td>@Model.Phone</td>
+                <td>@Model.Email</td>
+                <td><a class="button" asp-controller="Home" asp-action="TenantEdit" asp-route-id="@Model.Id">  Изменить  </a></td>
+                <td>
+                    <form class="buttonForm" method="post" asp-controller="Home" asp-action="TenantDelete">
+                        <input type="hidden" value="@Model.Id" name="Id" />
+                        <input type="submit" value="  Удалить  " />
+                    </form>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td colspan="6"><b>Ничего не найдено. Проверьте корректность заполнения поля ввода.</b></td>
+            </tr>
+        }
+    </tbody>
+</table>
