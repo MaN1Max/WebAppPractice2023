@@ -20,7 +20,7 @@ namespace WebAppMVCPractice
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<TenantRepository>();
+            services.AddScoped<ITenantRepository, TenantRepository>();
 
             services.AddControllersWithViews();
 

@@ -6,9 +6,9 @@ namespace WebAppMVCPractice.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly TenantRepository tenantRepository;
+        private readonly ITenantRepository tenantRepository;
 
-        public HomeController(TenantRepository tenantRepository)
+        public HomeController(ITenantRepository tenantRepository)
         {
             this.tenantRepository = tenantRepository;
         }

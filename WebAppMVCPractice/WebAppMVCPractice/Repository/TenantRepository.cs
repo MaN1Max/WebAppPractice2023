@@ -4,7 +4,7 @@ using WebAppMVCPractice.Models;
 
 namespace WebAppMVCPractice.Repository
 {
-    public class TenantRepository
+    public class TenantRepository : ITenantRepository
     {
         private readonly AppDbContext context;
 
