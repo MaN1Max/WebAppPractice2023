@@ -13,7 +13,7 @@ namespace WebAppMVCPractice.Repository
             this.context = context;
         }
 
-        public IQueryable<Tenant> GetTtenants()
+        public IQueryable<Tenant> GetTenants()
         {
             return context.Tenant.OrderBy(x => x.Id);
         }
@@ -21,6 +21,11 @@ namespace WebAppMVCPractice.Repository
         public Tenant GetTenantById(int id)
         {
             return context.Tenant.SingleOrDefault(x => x.Id == id);
+        }
+
+        public IQueryable<Tenant> GetTenantBySurn(string searchSurn)
+        {
+            return context.Tenant.Where(x => x.Surn.Contains(searchSurn));
         }
 
         public int CreateTenant(Tenant entity)

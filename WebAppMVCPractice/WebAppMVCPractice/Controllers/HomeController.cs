@@ -15,13 +15,13 @@ namespace WebAppMVCPractice.Controllers
 
         public IActionResult TenantList()
         {
-            var model = tenantRepository.GetTtenants();
+            var model = tenantRepository.GetTenants();
             return View(model);
         }
 
-        public IActionResult TenantById(int id)
+        public IActionResult TenantBySurn(string surn)
         {
-            var model = tenantRepository.GetTenantById(id);
+            var model = tenantRepository.GetTenantBySurn(surn);
             return View(model);
         }
 
