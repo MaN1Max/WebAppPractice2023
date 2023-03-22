@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebAppMVCPractice.Models;
+using WebAPI.Models;
 
-namespace WebAppMVCPractice.Domain
+namespace WebAPI.Domain
 {
-    public class AppDbContext : DbContext
+    public class ApiDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions options) : base(options) { }
+        public ApiDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Tenant> Tenant { get; set; }
 
@@ -19,7 +19,7 @@ namespace WebAppMVCPractice.Domain
                 Name = "Иван",
                 Patr = "Иванович",
                 Email = "te.st@gmail.com",
-                Phone = "+12345678901"
+                Phone = "12345678901"
             });
         }
     }

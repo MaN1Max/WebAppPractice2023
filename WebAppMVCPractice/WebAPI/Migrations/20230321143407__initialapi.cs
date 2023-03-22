@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebAppMVCPractice.Migrations
+namespace WebAPI.Migrations
 {
-    public partial class _initial : Migration
+    public partial class _initialapi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace WebAppMVCPractice.Migrations
             migrationBuilder.InsertData(
                 table: "Tenant",
                 columns: new[] { "Id", "Email", "Name", "Patr", "Phone", "Surn" },
-                values: new object[] { 1, "te.st@gmail.com", "Иван", "Иванович", "+12345678901", "Иванов" });
+                values: new object[] { 1, "te.st@gmail.com", "Иван", "Иванович", "12345678901", "Иванов" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

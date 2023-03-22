@@ -3,8 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using WebAPI.Domain;
+using Microsoft.EntityFrameworkCore;
+using WebAPI.Repository;
 
-namespace WebAppMVCPractice
+namespace WebAPI
 {
     public class Startup
     {
@@ -17,7 +21,14 @@ namespace WebAppMVCPractice
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddTransient<TenantApiRepository>();
+
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
+            });
+            services.AddDbContext<ApiDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -25,11 +36,11 @@ namespace WebAppMVCPractice
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
 
             app.UseHttpsRedirection();
-
-            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -37,9 +48,7 @@ namespace WebAppMVCPractice
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=TenantList}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }

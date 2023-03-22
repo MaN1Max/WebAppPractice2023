@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebAppMVCPractice.Domain;
+using WebAPI.Domain;
 
-namespace WebAppMVCPractice.Migrations
+namespace WebAPI.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20230314164801__initial")]
-    partial class _initial
+    [DbContext(typeof(ApiDbContext))]
+    [Migration("20230321143407__initialapi")]
+    partial class _initialapi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace WebAppMVCPractice.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("WebAppMVCPractice.Models.Tenant", b =>
+            modelBuilder.Entity("WebAPI.Models.Tenant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace WebAppMVCPractice.Migrations
                             Email = "te.st@gmail.com",
                             Name = "Иван",
                             Patr = "Иванович",
-                            Phone = "+12345678901",
+                            Phone = "12345678901",
                             Surn = "Иванов"
                         });
                 });

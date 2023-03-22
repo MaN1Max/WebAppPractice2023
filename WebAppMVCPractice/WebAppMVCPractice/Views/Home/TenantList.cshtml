@@ -1,5 +1,4 @@
-﻿@using WebAppMVCPractice.Models
-@model IQueryable<WebAppMVCPractice.Models.Tenant>
+﻿@model List<WebAppMVCPractice.Models.Tenant>
 @{
     ViewData["Title"] = "Список арендаторов";
 }
@@ -16,7 +15,7 @@
             <b> | </b>
         </li>
         <li>
-            <form class="buttonForm" method="post" asp-controller="Home" asp-action="TenantBySurn">
+            <form class="buttonForm" method="get" asp-controller="Home" asp-action="TenantBySurn">
                 <input type="submit" value="  Поиск по фамилии  " />
                 <input type="search" name="surn" />
             </form>

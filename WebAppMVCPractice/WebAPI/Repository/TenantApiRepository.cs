@@ -1,14 +1,14 @@
 ﻿using System.Linq;
-using WebAppMVCPractice.Domain;
-using WebAppMVCPractice.Models;
+using WebAPI.Domain;
+using WebAPI.Models;
 
-namespace WebAppMVCPractice.Repository
+namespace WebAPI.Repository
 {
-    public class TenantRepository : ITenantRepository
+    public class TenantApiRepository
     {
-        private readonly AppDbContext context;
+        private readonly ApiDbContext context;
 
-        public TenantRepository(AppDbContext context)
+        public TenantApiRepository(ApiDbContext context)
         {
             this.context = context;
         }
