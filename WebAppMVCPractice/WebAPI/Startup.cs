@@ -21,7 +21,7 @@ namespace WebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<TenantApiRepository>();
+            services.AddScoped<ITenantApiRepository, TenantApiRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

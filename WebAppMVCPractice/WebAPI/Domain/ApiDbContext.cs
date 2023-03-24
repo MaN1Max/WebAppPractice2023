@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebAPI.Models;
+using System;
+using ClassLibrary;
 
 namespace WebAPI.Domain
 {
@@ -14,12 +15,12 @@ namespace WebAPI.Domain
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Tenant>().HasData(new Tenant
             {
-                Id = 1,
+                Id = Guid.NewGuid(),
                 Surn = "Иванов",
                 Name = "Иван",
                 Patr = "Иванович",
                 Email = "te.st@gmail.com",
-                Phone = "12345678901"
+                Phone = "123456"
             });
         }
     }

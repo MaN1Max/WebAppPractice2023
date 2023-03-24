@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
-using WebAPI.Models;
+using ClassLibrary;
 using WebAPI.Repository;
 
 namespace WebAPI.Controllers
@@ -9,9 +10,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class TenantApiController : ControllerBase
     {
-        private readonly TenantApiRepository tenantApiRepository;
+        private readonly ITenantApiRepository tenantApiRepository;
 
-        public TenantApiController(TenantApiRepository tenantApiRepository)
+        public TenantApiController(ITenantApiRepository tenantApiRepository)
         {
             this.tenantApiRepository = tenantApiRepository;
         }
@@ -45,7 +46,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             tenantApiRepository.DeleteTenant(new Tenant() { Id = id });
             return Ok(id);

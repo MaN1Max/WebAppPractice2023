@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebAPI.Migrations
 {
-    public partial class _initialapi : Migration
+    public partial class _initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,8 +11,7 @@ namespace WebAPI.Migrations
                 name: "Tenant",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Surn = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Patr = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -26,7 +26,7 @@ namespace WebAPI.Migrations
             migrationBuilder.InsertData(
                 table: "Tenant",
                 columns: new[] { "Id", "Email", "Name", "Patr", "Phone", "Surn" },
-                values: new object[] { 1, "te.st@gmail.com", "Иван", "Иванович", "12345678901", "Иванов" });
+                values: new object[] { new Guid("85c2fe93-6aee-4348-b2f2-41915febe0b1"), "te.st@gmail.com", "Иван", "Иванович", "123456", "Иванов" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

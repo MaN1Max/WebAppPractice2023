@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace WebAPI.Models
+namespace ClassLibrary
 {
     public class Tenant
     {
         [Required]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Заполните поле с фамилией.")]
         [Display(Name = "Фамилия")]

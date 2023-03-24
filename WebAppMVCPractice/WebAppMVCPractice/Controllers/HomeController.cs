@@ -1,50 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using WebAppMVCPractice.Models;
+using ClassLibrary;
+using WebAppMVCPractice.Repository;
 
 namespace WebAppMVCPractice.Controllers
 {
     public class HomeController : Controller
     {
-        Uri url = new Uri("https://localhost:44325/api");
-        HttpClient client;
+        ITestRepository testRepository;
 
-        public HomeController()
+        public HomeController(ITestRepository r)
         {
-            client = new HttpClient();
-            client.BaseAddress = url;
+            testRepository = r;
         }
 
         public ActionResult TenantList()
         {
-            List<Tenant> list = new List<Tenant>();
-            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/TenantApi").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                list = JsonConvert.DeserializeObject<List<Tenant>>(data);
-            }
-            return View(list);
+            return View(testRepository.GetTenants());
         }
 
         [HttpGet]
         public ActionResult TenantBySurn(string surn)
         {
-            List<Tenant> model = new List<Tenant>();
-            Tenant tenant = new Tenant();
-            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/TenantApi").Result;
-            if ((response.IsSuccessStatusCode) && (surn != null))
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                model = JsonConvert.DeserializeObject<List<Tenant>>(data);
-                model = model.Where(x => x.Surn.Contains(surn)).ToList();
-            }
-            return View(model);
+            return View(testRepository.GetTenantBySurn(surn));
         }
 
         public ActionResult TenantCreate()
@@ -52,11 +31,9 @@ namespace WebAppMVCPractice.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult TenantCreate(Tenant model)
+        public ActionResult TenantCreate(Tenant entity)
         {
-            string data = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PostAsync(client.BaseAddress + "/TenantApi", content).Result;
+            HttpResponseMessage response = testRepository.CreateTenant(entity);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("TenantList");
@@ -64,37 +41,25 @@ namespace WebAppMVCPractice.Controllers
             return View();
         }
 
-        public ActionResult TenantEdit(int id)
+        public ActionResult TenantEdit(Guid id)
         {
-            List<Tenant> model = new List<Tenant>();
-            Tenant tenant = new Tenant();
-            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/TenantApi").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                model = JsonConvert.DeserializeObject<List<Tenant>>(data);
-                tenant = model.Single(x => x.Id == id);
-            }
-            return View(tenant);
+            return View(testRepository.EditTenant(id));
         }
         [HttpPost]
-        public ActionResult TenantEdit(Tenant model)
+        public ActionResult TenantEdit(Tenant entity)
         {
-            string data = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PutAsync(client.BaseAddress + "/TenantApi/" + model.Id, content).Result;
+            HttpResponseMessage response = testRepository.EditTenantPost(entity);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("TenantList");
             }
-            return View(model);
+            return View(entity);
         }
 
         [HttpPost]
-        public ActionResult TenantDelete(int id)
+        public ActionResult TenantDelete(Guid id)
         {
-            Tenant tenant = new Tenant();
-            HttpResponseMessage response = client.DeleteAsync(client.BaseAddress + "/TenantApi/" + id).Result;
+            HttpResponseMessage response = testRepository.DeleteTenant(id);
             return RedirectToAction("TenantList");
         }
 

@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using WebAPI.Domain;
-using WebAPI.Models;
+using ClassLibrary;
+using System.Collections.Generic;
 
 namespace WebAPI.Repository
 {
-    public class TenantApiRepository
+    public class TenantApiRepository : ITenantApiRepository
     {
         private readonly ApiDbContext context;
 
@@ -13,29 +15,29 @@ namespace WebAPI.Repository
             this.context = context;
         }
 
-        public IQueryable<Tenant> GetTenants()
+        public List<Tenant> GetTenants()
         {
-            return context.Tenant.OrderBy(x => x.Id);
+            return context.Tenant.OrderBy(x => x.Id).ToList();
         }
 
-        public Tenant GetTenantById(int id)
+        public Tenant GetTenantById(Guid id)
         {
             return context.Tenant.SingleOrDefault(x => x.Id == id);
         }
 
-        public IQueryable<Tenant> GetTenantBySurn(string searchSurn)
+        public List<Tenant> GetTenantBySurn(string searchSurn)
         {
-            return context.Tenant.Where(x => x.Surn.Contains(searchSurn));
+            return context.Tenant.Where(x => x.Surn.Contains(searchSurn)).ToList();
         }
 
-        public int CreateTenant(Tenant entity)
+        public Guid CreateTenant(Tenant entity)
         {
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
             context.SaveChanges();
             return entity.Id;
         }
 
-        public int EditTenant(Tenant entity)
+        public Guid EditTenant(Tenant entity)
         {
             context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             context.SaveChanges();

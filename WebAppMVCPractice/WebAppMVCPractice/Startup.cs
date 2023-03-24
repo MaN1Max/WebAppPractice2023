@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAppMVCPractice.Repository;
 
 namespace WebAppMVCPractice
 {
@@ -17,6 +18,8 @@ namespace WebAppMVCPractice
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITestRepository, TestRepository>();
+
             services.AddControllersWithViews();
         }
 
